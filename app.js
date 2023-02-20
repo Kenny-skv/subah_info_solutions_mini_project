@@ -44,14 +44,15 @@ app.post("/add", async (req, res) => {
 //Running application at localhost:2000
 app.listen(PORT, function (){
     console.log("Server is running on 2000")
+    mongoose.set("strictQuery",false)
     mongoose.connect(DB_URL).then(
         function(){
             console.log("Database is connected")
         }
     ).
     catch(
-        function(){
-            console.log("Database connecting error!")
+        function(e){
+            console.log(e)
         }
     )
     
